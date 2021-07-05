@@ -93,7 +93,7 @@ def generate_pt_cloud_one_var(N,mu,init_value=[0,0], dim = 2):
 # ax.scatter3D(x,y,z, cmap='Greens')
 # plt.show()
 
-def generate_persistence_diag(pt_cloud, max_radius = 1, max_dim=3):
+def generate_persistence_diag(pt_cloud, max_radius = 1, max_dim=2):
 	rips_complex = gd.RipsComplex(points = pt_cloud, max_edge_length = max_radius)
 	simplex_tree = rips_complex.create_simplex_tree(max_dimension = max_dim)
 	pers = simplex_tree.persistence()
@@ -101,9 +101,10 @@ def generate_persistence_diag(pt_cloud, max_radius = 1, max_dim=3):
 	return ax
 
 #Test case for the function "generate_persistence_diag" -> seems to be working
-pt_cloud = generate_pt_cloud_one_var(1000,0.1,[0.5,0],3)
+pt_cloud = generate_pt_cloud_one_var(1000,0.1,[0.5,0],2)
 print(pt_cloud)
-generate_persistence_diag(pt_cloud)
+generate_persistence_diag(pt_cloud,0.5,2)
+plt.show()
 
 # mu_values = np.linspace(start = 0.1, stop = 0.8, num = 14)
 # subplot = {}
